@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Info terkini perkembangan COVID-19 di Indonesia</title>
+</head>
+<body>
+    <script>
+        fetch('https://api.kawalcorona.com/indonesia/')
+            .then(res => res.json())
+            .then((out) => {
+                var result = out;
+                document.querySelector('.positif').innerHTML = 'Positif: ' + result[0]['positif'];
+                document.querySelector('.sembuh').innerHTML = 'Sembuh: ' + result[0]['sembuh'];
+                document.querySelector('.meninggal').innerHTML = 'Meninggal: ' + result[0]['meninggal'];
+            }).catch(err => console.error(err));
+    </script>
+
+    <h2>Info terkini perkembangan COVID-19 di Indoensia</h2>
+    <div class="positif"></div>
+    <div class="sembuh"></div>
+    <div class="meninggal"></div>
+</body>
+</html>
